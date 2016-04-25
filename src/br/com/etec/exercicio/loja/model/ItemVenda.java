@@ -42,6 +42,7 @@ public class ItemVenda implements java.io.Serializable {
     private Venda venda;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_PRODUTO")
     private Produto produto;
 
     @Column(name = "QUANTIDADE")

@@ -11,8 +11,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 /**
  *
@@ -20,6 +23,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "PRODUTO")
+@DynamicUpdate(true)
+@SelectBeforeUpdate(true)
 public class Produto implements java.io.Serializable {
 
     /*
@@ -35,6 +40,7 @@ public class Produto implements java.io.Serializable {
     private Integer codProduto;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = ("COD_FORNECEDOR"))
     private Fornecedor fornecedor;
 
     @Column(name = "NOME_PRODUTO")
@@ -88,7 +94,7 @@ public class Produto implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "Produto{" + "codProduto=" + codProduto + ", fornecedor=" + fornecedor + ", nomeProduto=" + nomeProduto + ", precoUnitario=" + precoUnitario + ", flgAtivo=" + flgAtivo + '}';
+        return "Produto{" + "codProduto=" + codProduto + ", fornecedor=[" + fornecedor.toString() + "], nomeProduto=" + nomeProduto + ", precoUnitario=" + precoUnitario + ", flgAtivo=" + flgAtivo + '}';
     }
 
 }

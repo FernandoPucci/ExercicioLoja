@@ -27,7 +27,7 @@ public class FornecedorTesters {
             //testa consulta fornecedor por codigo
             consultarFornecedorByIdTester(997);
             //testa atualizacao de fornecedor
-            atualizarFornecedorByIdTesters(18);
+            atualizarFornecedorByIdTesters(4);
 
             System.exit(0);
         } catch (Exception ex) {
@@ -100,7 +100,7 @@ public class FornecedorTesters {
 
             //atualiza cidade
             fornecedor.setCidade("Monte Santo de Minas");
-            
+            fornecedor.setEstado("MG");
             fornecedorController.atualizarFornecedorByIdController(fornecedor);
             
         }else{

@@ -32,7 +32,7 @@ public class ClienteTesters {
             
             
             //testar atualização do cliente
-            atualizarClienteByIdTesters(5);
+            atualizarClienteByIdTesters(2);
 
             System.exit(0);
         } catch (Exception ex) {
@@ -107,8 +107,8 @@ public class ClienteTesters {
         if (cliente != null) {
 
             //atualiza cidade
-           // cliente.setCidade("Monte Santo de Minas");
-           // cliente.setEndereco("Av. Vital Paulino Costa, 310");
+            cliente.setCidade("Monte Santo de Minas");
+            cliente.setEndereco("Av. Vital Paulino Costa, 310");
             cliente.setEstado("MG");
             clienteController.atualizarClienteByIdController(cliente);
             

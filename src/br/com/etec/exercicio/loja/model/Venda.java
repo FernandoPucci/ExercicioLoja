@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -40,11 +41,12 @@ public class Venda implements java.io.Serializable {
 //
 //    }
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "COD_VENDA")
     private Integer codVenda;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_CLIENTE")
     private Cliente cliente;
 
     @Column(name = "VALOR_TOTAL")
@@ -53,8 +55,6 @@ public class Venda implements java.io.Serializable {
     @Column(name = "DATA_NOTA")
     @Temporal(TemporalType.DATE)//valor padr?o para date timeS
     private Date dataNota;
-
-
 
     public void setDataNota(Date dataNota) {
         System.out.println("Passando a data pelo java.util.Date");
@@ -65,7 +65,6 @@ public class Venda implements java.io.Serializable {
         System.out.println("Passando a data pelo metodo sobrecarregado java.sql.Date");
         this.dataNota = dataNota;
     }
-
 
     @Override
     public String toString() {
