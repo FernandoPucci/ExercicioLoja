@@ -26,6 +26,8 @@ public class FornecedorTesters {
             consultarTodosFornecedoresTester();
             //testa consulta fornecedor por codigo
             consultarFornecedorByIdTester(997);
+            //testa atualizacao de fornecedor
+            atualizarFornecedorFornecedorByIdTesters(18);
 
             System.exit(0);
         } catch (Exception ex) {
@@ -83,6 +85,30 @@ public class FornecedorTesters {
 
         System.out.println("Teste OK");
 
+    }
+    
+    public static void  atualizarFornecedorFornecedorByIdTesters(Integer codFornecedor) throws Exception{
+    
+        FornecedorController fornecedorController = new FornecedorController();
+        System.out.println("Teste Consulta/atualzacao FORNECEDOR por ID " + codFornecedor);
+
+        Fornecedor fornecedor = null;
+
+        fornecedor = fornecedorController.consultarFornecedorByIdController(codFornecedor);
+
+        if (fornecedor != null) {
+
+            //atualiza cidade
+            fornecedor.setCidade("Monte Santo de Minas");
+            
+            fornecedorController.atualizarFornecedorFornecedorByIdController(fornecedor);
+            
+        }else{
+        
+            System.out.println("NÃO FOI ENCONTRADO NENHUM FORNECEDOR PARA O CODIGO [" + codFornecedor + "]");
+        }
+    
+    
     }
 
 }

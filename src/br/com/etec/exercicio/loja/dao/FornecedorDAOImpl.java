@@ -12,5 +12,5 @@ import br.com.etec.exercicio.loja.model.Fornecedor;
  * @author fernando-pucci
  */
 public class FornecedorDAOImpl extends BaseDAOImpl<Fornecedor, Integer> implements FornecedorDAO {
-    
+   
 }

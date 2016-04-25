@@ -51,13 +51,28 @@ public class FornecedorController {
 
     }
 
-    public Fornecedor consultarFornecedorByIdController(Integer codFornecedor) {
+    public Fornecedor consultarFornecedorByIdController(Integer codFornecedor) throws Exception {
 
         Fornecedor fornecedorSaida = null;
 
         fornecedorSaida = fornecedorDAO.getById(Fornecedor.class, codFornecedor);
 
         return fornecedorSaida;
+
+    }
+
+    public void atualizarFornecedorFornecedorByIdController(Fornecedor fornecedor) throws Exception {
+
+        Fornecedor fornecedorSaida = new Fornecedor();
+        fornecedorSaida.setCidade(fornecedor.getCidade().trim().toUpperCase());
+        fornecedorSaida.setCodFornecedor(fornecedor.getCodFornecedor());
+        fornecedorSaida.setFlgAtivo(Boolean.TRUE);
+
+        fornecedorSaida.setEstado(fornecedor.getEstado().trim().toUpperCase());
+        fornecedorSaida.setNomeFornecedor(fornecedor.getNomeFornecedor().trim().toUpperCase());
+
+        //salva atualizando
+        fornecedorDAO.save(fornecedorSaida);
 
     }
 

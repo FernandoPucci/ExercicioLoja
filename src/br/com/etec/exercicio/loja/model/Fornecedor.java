@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 /**
  *
@@ -18,6 +20,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "FORNECEDOR")
+@DynamicUpdate(true)
+@SelectBeforeUpdate(true)
 public class Fornecedor implements java.io.Serializable{
 
     /*
