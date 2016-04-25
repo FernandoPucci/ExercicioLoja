@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.exercicio.loja.controller;
+package br.com.etec.exercicio.loja.dao;
+
+import br.com.etec.exercicio.loja.model.Produto;
 
 /**
  *
  * @author fernando-pucci
  */
-public class VendaController {
+public interface ProdutoDAO extends BaseDAO<Produto, Integer> {
     
 }

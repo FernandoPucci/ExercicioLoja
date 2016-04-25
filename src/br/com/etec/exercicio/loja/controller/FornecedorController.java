@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.exercicio.loja.controller;
+package br.com.etec.exercicio.loja.controller;
 
 import br.com.etec.exercicio.loja.model.Fornecedor;
-import br.com.exercicio.loja.dao.FornecedorDAO;
-import br.com.exercicio.loja.dao.FornecedorDAOImpl;
+import br.com.etec.exercicio.loja.dao.FornecedorDAO;
+import br.com.etec.exercicio.loja.dao.FornecedorDAOImpl;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -6,7 +6,7 @@
 package br.com.etec.exercicio.loja.view.testers;
 
 import br.com.etec.exercicio.loja.model.Fornecedor;
-import br.com.exercicio.loja.controller.FornecedorController;
+import br.com.etec.exercicio.loja.controller.FornecedorController;
 import java.util.ArrayList;
 import java.util.List;
 

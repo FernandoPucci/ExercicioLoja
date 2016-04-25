@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.exercicio.loja.dao;
+package br.com.etec.exercicio.loja.dao;
 
 import br.com.etec.exercicio.loja.model.Cliente;
 
@@ -11,6 +11,6 @@ import br.com.etec.exercicio.loja.model.Cliente;
  *
  * @author fernando-pucci
  */
-public interface ClienteDAO extends BaseDAO<Cliente, Integer> {
-
+public class VendaDAOImpl extends BaseDAOImpl<Cliente, Integer> implements ClienteDAO {
+    
 }

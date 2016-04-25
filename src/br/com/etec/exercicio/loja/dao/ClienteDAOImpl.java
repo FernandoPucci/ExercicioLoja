@@ -3,14 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.exercicio.loja.dao;
+package br.com.etec.exercicio.loja.dao;
 
-import br.com.etec.exercicio.loja.model.Produto;
+import br.com.etec.exercicio.loja.model.Cliente;
 
 /**
  *
  * @author fernando-pucci
  */
-public class ProdutoDAOImpl extends BaseDAOImpl<Produto, Integer> implements ProdutoDAO {
-    
+public class ClienteDAOImpl extends BaseDAOImpl<Cliente, Integer> implements ClienteDAO {
+ 
 }
+
