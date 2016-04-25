@@ -67,4 +67,23 @@ public class ClienteController {
         return clienteSaida;
 
     }
+
+    public void atualizarClienteByIdController(Cliente cliente) throws Exception {
+
+        Cliente clienteSaida = new Cliente();
+
+        clienteSaida.setCodCliente(cliente.getCodCliente());
+        clienteSaida.setCidade(cliente.getCidade().trim().toUpperCase());
+        clienteSaida.setNome(cliente.getNome().trim().toUpperCase());
+        clienteSaida.setSobrenome(cliente.getSobrenome().trim().toUpperCase());
+        clienteSaida.setFlgAtivo(cliente.getFlgAtivo());
+        clienteSaida.setEndereco(cliente.getEndereco().trim().toUpperCase());
+        clienteSaida.setEstado(cliente.getEstado().trim().toUpperCase());
+        clienteSaida.setCpf(cliente.getCpf().trim().toUpperCase());
+
+        //salva atualizando
+        clienteDAO.save(clienteSaida);
+
+    }
+
 }

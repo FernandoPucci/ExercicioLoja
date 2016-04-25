@@ -27,7 +27,7 @@ public class FornecedorTesters {
             //testa consulta fornecedor por codigo
             consultarFornecedorByIdTester(997);
             //testa atualizacao de fornecedor
-            atualizarFornecedorFornecedorByIdTesters(18);
+            atualizarFornecedorByIdTesters(18);
 
             System.exit(0);
         } catch (Exception ex) {
@@ -87,7 +87,7 @@ public class FornecedorTesters {
 
     }
     
-    public static void  atualizarFornecedorFornecedorByIdTesters(Integer codFornecedor) throws Exception{
+    public static void  atualizarFornecedorByIdTesters(Integer codFornecedor) throws Exception{
     
         FornecedorController fornecedorController = new FornecedorController();
         System.out.println("Teste Consulta/atualzacao FORNECEDOR por ID " + codFornecedor);
@@ -101,7 +101,7 @@ public class FornecedorTesters {
             //atualiza cidade
             fornecedor.setCidade("Monte Santo de Minas");
             
-            fornecedorController.atualizarFornecedorFornecedorByIdController(fornecedor);
+            fornecedorController.atualizarFornecedorByIdController(fornecedor);
             
         }else{
         

@@ -29,6 +29,10 @@ public class ClienteTesters {
             
             //testa consulta cliente por codigo
             consultarClienteByIdTester(5);
+            
+            
+            //testar atualização do cliente
+            atualizarClienteByIdTesters(5);
 
             System.exit(0);
         } catch (Exception ex) {
@@ -88,6 +92,32 @@ public class ClienteTesters {
 
         System.out.println("Teste OK");
 
+    }
+      
+      
+         public static void  atualizarClienteByIdTesters(Integer codCliente) throws Exception{
+    
+        ClienteController clienteController = new ClienteController();
+        System.out.println("Teste Consulta/atualzacao CLIENTE por ID " + codCliente);
+
+        Cliente cliente = null;
+
+        cliente = clienteController.consultarClienteByIdController(codCliente);
+
+        if (cliente != null) {
+
+            //atualiza cidade
+           // cliente.setCidade("Monte Santo de Minas");
+           // cliente.setEndereco("Av. Vital Paulino Costa, 310");
+            cliente.setEstado("MG");
+            clienteController.atualizarClienteByIdController(cliente);
+            
+        }else{
+        
+            System.out.println("NÃO FOI ENCONTRADO NENHUM CLIENTE PARA O CODIGO [" + codCliente + "]");
+        }
+    
+    
     }
     
     

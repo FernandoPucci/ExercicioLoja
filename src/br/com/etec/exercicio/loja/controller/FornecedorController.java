@@ -61,7 +61,7 @@ public class FornecedorController {
 
     }
 
-    public void atualizarFornecedorFornecedorByIdController(Fornecedor fornecedor) throws Exception {
+    public void atualizarFornecedorByIdController(Fornecedor fornecedor) throws Exception {
 
         Fornecedor fornecedorSaida = new Fornecedor();
         fornecedorSaida.setCidade(fornecedor.getCidade().trim().toUpperCase());
