@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang='en'>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Java Persistence API: XML Schemas</title>
+<style>
+    b {
+        color: #E40000;
+    }
+    
+    th {
+        background: #E40000;
+        color: white;
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+</style>
+</head>
+<body>
+    <div id="titleSource" style="background-">
+        <IMG SRC="http://www.oracle.com/ocom/groups/public/documents/digitalasset/016091_en.gif">
+    </div>
+<a name="top"></a>
+
+<!-- BEGIN PAGETITLE -->
+<div class="smallpagetitle"><h1>Java Persistence API: XML Schemas</h1></div>
+<!-- END PAGETITLE -->
+<!-- ============ -->
+<!-- MAIN CONTENT -->
+<!-- ============ -->
+<div class="contentdivider"><hr /> </div>
+<div><b>Contents</b></div>
+<ul>
+<li><a href="#0">Introduction</a></li>
+<li><a href="#1">Using Java Persistence Schemas</a></li>
+<li><a href="#2.1">Java Persistence 2.1 Schema Resources</a></li>
+<li><a href="#2.0">Java Persistence 2.0 Schema Resources</a></li>
+<li><a href="#1.0">Java Persistence 1.0 Schema Resources</a></li>
+</ul>
+<a name="0"></a>
+<div><b>Introduction</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>
+This document lists the document formats that will be used by the
+Java Persistence API XML descriptors.  The Java Persistence API
+requires that its XML descriptors be validated with respect to the XML
+Schema listed by this document.
+</p>
+<a name="1"></a>
+<div><b>Using Java Persistence Schemas</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>
+Starting with the 2.1 version,
+the Java Persistence API Schemas share the namespace,
+<code>http://xmlns.jcp.org/xml/ns/persistence/</code>.
+Previous versions used the namespace
+<code>http://java.sun.com/xml/ns/persistence/</code>. Each schema
+document contains a version attribute that contains the version of the
+Java Persistence specification. This pertains to the specific version
+of the specification as well as the schema document itself.
+</p>
+<p>
+Each Java Persistence XML Schema document's file name contains the
+specific version of the Java Persistence specification to which it
+relates. This is introduced for convenience to locate specific versions
+of the schema documents. However, XML descriptor instances are not
+required to refer to a specific file. Instead, an instance must specify
+the version of the specification by using the version attribute.  This
+allows XML descriptor processors to use the version information to
+choose the appropriate version of the schema document(s) to process XML
+descriptor instances.
+</p>
+<a name="2.1"></a>
+<div><b>Java Persistence 2.1 Schema Resources</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>This table contains the XML Schema components for Java Persistence 2.1.</p>
+<p>
+<table width="100%" border="1" cellpadding="3">
+<tbody>
+<tr>
+<th><span class="body">Date Published</span></th>
+<th><span class="body">File Name</span></th>
+<th><span class="body">Description</span></th>
+<th><span class="body">Status</span></th>
+</tr>
+<tr>
+<td><span class="body">April 22, 2013</span></td>
+<td><span class="body"><a href="orm_2_1.xsd"><code>orm_2_1.xsd</code></a></span></td>
+<td><span class="body">Object/relational mapping file schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+<tr>
+<td><span class="body">April 22, 2013</span></td>
+<td><span class="body"><a href="persistence_2_1.xsd"><code>persistence_2_1.xsd</code></a></span></td>
+<td><span class="body">Persistence configuration schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+</table>
+</p>
+<br/>
+<br/>
+<a name="2.0"></a>
+<div><b>Java Persistence 2.0 Schema Resources</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>This table contains the XML Schema components for Java Persistence 2.0.</p>
+<p>
+<table width="100%" border="1" cellpadding="3">
+<tbody>
+<tr>
+<th><span class="body">Date Published</span></th>
+<th><span class="body">File Name</span></th>
+<th><span class="body">Description</span></th>
+<th><span class="body">Status</span></th>
+</tr>
+<tr>
+<td><span class="body">December 10, 2009</span></td>
+<td><span class="body"><a href="orm_2_0.xsd"><code>orm_2_0.xsd</code></a></span></td>
+<td><span class="body">Object/relational mapping file schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+<tr>
+<td><span class="body">December 10, 2009</span></td>
+<td><span class="body"><a href="persistence_2_0.xsd"><code>persistence_2_0.xsd</code></a></span></td>
+<td><span class="body">Persistence configuration schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+</table>
+</p>
+<br/>
+<br/>
+<a name="1.0"></a>
+<div><b>Java Persistence 1.0 Schema Resources</b></div>
+<div class="contentdivider"><hr /> </div>
+<p>This table contains the XML Schema components for Java Persistence 1.0.</p>
+<p>
+<table width="100%" border="1" cellpadding="3">
+<tbody>
+<tr>
+<th><span class="body">Date Published</span></th>
+<th><span class="body">File Name</span></th>
+<th><span class="body">Description</span></th>
+<th><span class="body">Status</span></th>
+</tr>
+<tr>
+<td><span class="body">May 11, 2006</span></td>
+<td><span class="body"><a href="orm_1_0.xsd"><code>orm_1_0.xsd</code></a></span></td>
+<td><span class="body">Object/relational mapping file schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+<tr>
+<td><span class="body">May 11, 2006</span></td>
+<td><span class="body"><a href="persistence_1_0.xsd"><code>persistence_1_0.xsd</code></a></span></td>
+<td><span class="body">Persistence configuration schema</span></td>
+<td><span class="body">Final Release</span></td>
+</tr>
+</table>
+</p>
+<!-- =================== -->
+<!-- END OF MAIN CONTENT -->
+<!-- =================== -->
+</body>
+</html>
