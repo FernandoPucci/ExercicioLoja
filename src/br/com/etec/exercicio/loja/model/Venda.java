@@ -17,6 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 /**
  *
@@ -24,6 +26,8 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "VENDA")
+@DynamicUpdate(true)
+@SelectBeforeUpdate(true)
 public class Venda implements java.io.Serializable {
 
     /*
@@ -53,22 +57,56 @@ public class Venda implements java.io.Serializable {
     private Double valorTotal;
 
     @Column(name = "DATA_NOTA")
-    @Temporal(TemporalType.DATE)//valor padr?o para date timeS
+    @Temporal(TemporalType.TIMESTAMP)//valor padrão para date timestamp
     private Date dataNota;
 
     public void setDataNota(Date dataNota) {
-        System.out.println("Passando a data pelo java.util.Date");
+
         this.dataNota = dataNota;
     }
 
     public void setDataNota(java.sql.Date dataNota) {
-        System.out.println("Passando a data pelo metodo sobrecarregado java.sql.Date");
+
         this.dataNota = dataNota;
+    }
+
+    public Date getDataNota() {
+
+        return this.dataNota;
+    }
+
+    public java.sql.Date getDataNotaSql() {
+
+        return (java.sql.Date) this.dataNota;
+    }
+
+    public Integer getCodVenda() {
+        return codVenda;
+    }
+
+    public void setCodVenda(Integer codVenda) {
+        this.codVenda = codVenda;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     @Override
     public String toString() {
-        return "Venda{" + "codVenda=" + codVenda + ", cliente=" + cliente + ", valorTotal=" + valorTotal + ", dataNota=" + dataNota + '}';
+        return "Venda{" + "codVenda=" + codVenda + ", cliente= [" + cliente.toString() + "], valorTotal=" + valorTotal + ", dataNota=" + dataNota + '}';
     }
 
 }

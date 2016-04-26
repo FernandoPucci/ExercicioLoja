@@ -53,7 +53,7 @@ public class ProdutoController {
         
     }
     
-    public List<Produto> listarTodosProdutossController() throws Exception {
+    public List<Produto> listarTodosProdutosController() throws Exception {
         
         List<Produto> listaSaida = new ArrayList<Produto>();
         

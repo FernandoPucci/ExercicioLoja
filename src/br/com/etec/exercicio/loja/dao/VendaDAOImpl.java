@@ -5,12 +5,12 @@
  */
 package br.com.etec.exercicio.loja.dao;
 
-import br.com.etec.exercicio.loja.model.Cliente;
+import br.com.etec.exercicio.loja.model.Venda;
 
 /**
  *
  * @author fernando-pucci
  */
-public class VendaDAOImpl extends BaseDAOImpl<Cliente, Integer> implements ClienteDAO {
+public class VendaDAOImpl extends BaseDAOImpl<Venda, Integer> implements VendaDAO {
     
 }

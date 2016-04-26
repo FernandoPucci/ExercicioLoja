@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 /**
  *
@@ -22,6 +24,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "ITEM_VENDA")
+@DynamicUpdate(true)
+@SelectBeforeUpdate(true)
 public class ItemVenda implements java.io.Serializable {
 
     /*

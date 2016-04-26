@@ -68,7 +68,7 @@ public class ProdutoTesters {
         
         List<Produto> listaProdutos = new ArrayList<Produto>();
         
-        listaProdutos = produtoController.listarTodosProdutossController();
+        listaProdutos = produtoController.listarTodosProdutosController();
         
         if (listaProdutos.isEmpty()) {
             
