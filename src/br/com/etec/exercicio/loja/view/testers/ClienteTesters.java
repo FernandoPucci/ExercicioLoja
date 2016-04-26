@@ -48,7 +48,7 @@ public class ClienteTesters {
         //Cria uma instancia do objeto ClienteController
         ClienteController clienteController = new ClienteController();
         System.out.println("Teste Cadastrando cliente");
-        clienteController.cadastrarClienteController("JOSE", "DA SILVA", "34994838499", "RUA ANTONIO CRISTOVAM, 543", "MOCOCA", "SP");
+        clienteController.cadastrarClienteController("JOSE", "DA SILVA", "38658963756", "RUA ANTONIO CRISTOVAM, 543", "MOCOCA", "SP");
         System.out.println("Teste OK");
 
     }
