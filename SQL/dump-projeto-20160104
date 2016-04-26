@@ -1,0 +1,151 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.20
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema exec_pc_ii
+--
+
+CREATE DATABASE IF NOT EXISTS exec_pc_ii;
+USE exec_pc_ii;
+
+--
+-- Definition of table `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+CREATE TABLE `cliente` (
+  `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT,
+  `NOME` varchar(100) DEFAULT NULL,
+  `SOBRENOME` varchar(100) DEFAULT NULL,
+  `CPF` varchar(20) DEFAULT NULL,
+  `ENDERECO` varchar(100) DEFAULT NULL,
+  `CIDADE` varchar(50) DEFAULT NULL,
+  `ESTADO` varchar(2) DEFAULT NULL,
+  `FLG_ATIVO` char(1) DEFAULT NULL,
+  PRIMARY KEY (`COD_CLIENTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cliente`
+--
+
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+
+
+--
+-- Definition of table `fornecedor`
+--
+
+DROP TABLE IF EXISTS `fornecedor`;
+CREATE TABLE `fornecedor` (
+  `COD_FORNECEDOR` int(11) NOT NULL AUTO_INCREMENT,
+  `NOME_FORNECEDOR` varchar(100) DEFAULT NULL,
+  `CIDADE` varchar(50) DEFAULT NULL,
+  `ESTADO` varchar(2) DEFAULT NULL,
+  `FLG_ATIVO` char(1) DEFAULT NULL,
+  PRIMARY KEY (`COD_FORNECEDOR`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fornecedor`
+--
+
+/*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
+
+
+--
+-- Definition of table `item_venda`
+--
+
+DROP TABLE IF EXISTS `item_venda`;
+CREATE TABLE `item_venda` (
+  `COD_ITEM` int(11) NOT NULL AUTO_INCREMENT,
+  `COD_VENDA` int(11) DEFAULT NULL,
+  `COD_PRODUTO` int(11) DEFAULT NULL,
+  `QUANTIDADE` int(11) DEFAULT NULL,
+  PRIMARY KEY (`COD_ITEM`),
+  KEY `COD_VENDA` (`COD_VENDA`),
+  KEY `COD_PRODUTO` (`COD_PRODUTO`),
+  CONSTRAINT `item_venda_ibfk_1` FOREIGN KEY (`COD_VENDA`) REFERENCES `venda` (`COD_VENDA`),
+  CONSTRAINT `item_venda_ibfk_2` FOREIGN KEY (`COD_PRODUTO`) REFERENCES `produto` (`COD_PRODUTO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `item_venda`
+--
+
+/*!40000 ALTER TABLE `item_venda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `item_venda` ENABLE KEYS */;
+
+
+--
+-- Definition of table `produto`
+--
+
+DROP TABLE IF EXISTS `produto`;
+CREATE TABLE `produto` (
+  `COD_PRODUTO` int(11) NOT NULL AUTO_INCREMENT,
+  `COD_FORNECEDOR` int(11) DEFAULT NULL,
+  `NOME_PRODUTO` varchar(50) DEFAULT NULL,
+  `PRECO_UNITARIO` decimal(5,2) DEFAULT NULL,
+  `FLG_ATIVO` char(1) DEFAULT NULL,
+  PRIMARY KEY (`COD_PRODUTO`),
+  KEY `COD_FORNECEDOR` (`COD_FORNECEDOR`),
+  CONSTRAINT `produto_ibfk_1` FOREIGN KEY (`COD_FORNECEDOR`) REFERENCES `fornecedor` (`COD_FORNECEDOR`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produto`
+--
+
+/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+
+
+--
+-- Definition of table `venda`
+--
+
+DROP TABLE IF EXISTS `venda`;
+CREATE TABLE `venda` (
+  `COD_VENDA` int(11) NOT NULL AUTO_INCREMENT,
+  `COD_CLIENTE` int(11) DEFAULT NULL,
+  `VALOR_TOTAL` decimal(5,2) DEFAULT NULL,
+  `DATA_NOTA` date DEFAULT NULL,
+  PRIMARY KEY (`COD_VENDA`),
+  KEY `COD_CLIENTE` (`COD_CLIENTE`),
+  CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`COD_CLIENTE`) REFERENCES `cliente` (`COD_CLIENTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `venda`
+--
+
+/*!40000 ALTER TABLE `venda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `venda` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
