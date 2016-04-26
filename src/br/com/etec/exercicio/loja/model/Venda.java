@@ -37,13 +37,9 @@ public class Venda implements java.io.Serializable {
      VALOR_TOTAL
      DATA_NOTA
      */
-//    public Venda() {
-//
-//        //ao se instanciar o construtor de venda, 
-//        //j? criamos uma nova lista de itens de venda
-//        this.itensVenda = new ArrayList<ItemVenda>();
-//
-//    }
+    
+    //TODO: INSERIR COLUNA/FLAG 'VENDA_FINALIZADA' ???
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "COD_VENDA")

@@ -24,11 +24,11 @@ public class VendaTesters {
             //testa cadastrar Venda
             //cadastrarVendaTesters();
 
-            //testa listagem de todos produtos cadastrados
+            //testa listagem de todos vendas cadastrados
             consultarTodasVendasTesters();
-            //testar consultar produto por ID
+            //testar consultar venda por ID
              consultarVendaByIdTesters(1);
-            //testar atualizar produto
+            //testar atualizar venda
              atualizarVendaByIdTester(1);
              
              //consulta venda atualizada

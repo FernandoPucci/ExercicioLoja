@@ -33,8 +33,10 @@ public class ItemVenda implements java.io.Serializable {
      COD_VENDA
      COD_PRODUTO
      QUANTIDADE
-    
+      
      */
+    
+    //TODO: criar coluna SUB-TOTAL = qtdVendida * precoUnitario ???
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "COD_ITEM")
@@ -86,7 +88,7 @@ public class ItemVenda implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "ItemVenda{" + "codItemVenda=" + codItemVenda + ", venda=" + venda + ", produto=" + produto + ", quantidade=" + quantidade + '}';
+        return "ItemVenda{" + "codItemVenda=" + codItemVenda + ", venda= [" + venda.toString() + "], produto=[" + produto.toString() + "], quantidade=" + quantidade + '}';
     }
 
     
