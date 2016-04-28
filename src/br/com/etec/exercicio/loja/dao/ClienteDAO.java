@@ -6,6 +6,7 @@
 package br.com.etec.exercicio.loja.dao;
 
 import br.com.etec.exercicio.loja.model.Cliente;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,6 @@ import br.com.etec.exercicio.loja.model.Cliente;
  */
 public interface ClienteDAO extends BaseDAO<Cliente, Integer> {
 
+      public List<Cliente> consultarClienteByNomeSobrenomeDAO(String nome) throws Exception;
+       
 }

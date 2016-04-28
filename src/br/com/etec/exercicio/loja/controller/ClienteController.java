@@ -95,6 +95,22 @@ public class ClienteController {
 
     }
 
+    public List<Cliente> consultarClienteByNomeSobrenomeController(String nome) throws NegocioException, Exception {
+
+        List<Cliente> listaSaida = new ArrayList<Cliente>();
+
+        if ((nome == null) || (nome.trim().isEmpty())) {
+
+            return listaSaida;
+
+        }
+
+        listaSaida = clienteDAO.consultarClienteByNomeSobrenomeDAO(nome.trim());
+
+        return listaSaida;
+
+    }
+
     private void validaCliente(String nome, String sobrenome, String cpf, String endereco, String cidade, String estado) throws NegocioException, Exception {
 
         StringBuilder sbErrors = new StringBuilder();

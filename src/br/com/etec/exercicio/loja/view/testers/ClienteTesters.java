@@ -24,13 +24,16 @@ public class ClienteTesters {
             //testa o cadstro do clente
             //cadastrarClienteTester();
             //testa a consulta dos clientes
-            consultarTodosClientesTester();
+            //consultarTodosClientesTester();
 
             //testa consulta cliente por codigo
-            consultarClienteByIdTester(5);
+            //consultarClienteByIdTester(5);
 
             //testar atualização do cliente
-            atualizarClienteByIdTesters(1);
+            //atualizarClienteByIdTesters(1);
+            
+            //testa a consulta por trecho de nome/sobrenome
+            consultarClienteByNomeSobrenomeTester("ilv");
 
         } catch (Exception ex) {
 
@@ -131,5 +134,19 @@ public class ClienteTesters {
         }
 
     }
+    
+     private static void consultarClienteByNomeSobrenomeTester(String nome) throws Exception {
+     
+     ClienteController clienteController = new ClienteController();
+     
+     List<Cliente> listaCliente = clienteController.consultarClienteByNomeSobrenomeController(nome);
+         
+     for(Cliente c : listaCliente){
+     
+         System.out.println(c.toString());
+     
+     }
+     
+     }
 
 }
