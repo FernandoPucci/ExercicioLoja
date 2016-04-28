@@ -3,17 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/controller/FornecedorController.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/META-INF/persistence.xml</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/view/testers/ProdutoTesters.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/view/testers/FornecedorTesters.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/controller/ProdutoController.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/model/Cliente.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/model/Venda.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/model/Produto.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/view/testers/ClienteTesters.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/model/ItemVenda.java</file>
-            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/model/Fornecedor.java</file>
+            <file>file:/home/fernando-pucci/Aulas_PCII/Software/DAO-Generico/ExercicioLoja/ExercicioLoja/src/br/com/etec/exercicio/loja/controller/ClienteController.java</file>
         </group>
     </open-files>
 </project-private>

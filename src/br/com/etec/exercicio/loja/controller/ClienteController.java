@@ -16,7 +16,7 @@ import java.util.List;
 /**
  *
  * @author fernando-pucci]
- * 
+ *
  * Cliente Controller
  */
 public class ClienteController {
@@ -28,7 +28,7 @@ public class ClienteController {
         if (clienteDAO == null) {
 
             clienteDAO = new ClienteDAOImpl();
-            
+
         }
 
     }
@@ -38,6 +38,65 @@ public class ClienteController {
         //TODO: fazer validacoes necess?rias, e em caso de erro, retornar Exceção.
         //Cria um novo objeto cliente, 
         //para ser carregado com os dados recebidos pelos parametros
+        validaCliente(nome, sobrenome, cpf, endereco, cidade, estado);
+
+        Cliente cliente = new Cliente();
+
+        cliente.setNome(nome.trim().toUpperCase());
+        cliente.setSobrenome(sobrenome.trim().toUpperCase());
+        cliente.setCpf(cpf.trim().toUpperCase());
+        cliente.setEndereco(endereco.trim().toUpperCase());
+        cliente.setCidade(cidade.trim().toUpperCase());
+        cliente.setEstado(estado.trim().toUpperCase());
+        cliente.setFlgAtivo(true); //flgAtivo sempre TRUE ao cadastrar um Cliente
+
+        //salva um cliente
+        clienteDAO.save(cliente);
+
+    }
+
+    public List<Cliente> listarTodosClientesController() throws NegocioException, Exception {
+
+        List<Cliente> listaSaida = new ArrayList<Cliente>();
+
+        listaSaida = clienteDAO.getAll(Cliente.class);
+
+        return listaSaida;
+
+    }
+
+    public Cliente consultarClienteByIdController(Integer codCliente) throws NegocioException, Exception {
+
+        Cliente clienteSaida = null;
+
+        clienteSaida = clienteDAO.getById(Cliente.class, codCliente);
+
+        return clienteSaida;
+
+    }
+
+    public void atualizarClienteByIdController(Cliente cliente) throws NegocioException, Exception {
+
+        validaCliente(cliente.getNome(), cliente.getSobrenome(), cliente.getCpf(), cliente.getEndereco(), cliente.getCidade(), cliente.getEstado());
+
+        Cliente clienteSaida = new Cliente();
+
+        clienteSaida.setCodCliente(cliente.getCodCliente());
+        clienteSaida.setCidade(cliente.getCidade().trim().toUpperCase());
+        clienteSaida.setNome(cliente.getNome().trim().toUpperCase());
+        clienteSaida.setSobrenome(cliente.getSobrenome().trim().toUpperCase());
+        clienteSaida.setFlgAtivo(cliente.getFlgAtivo());
+        clienteSaida.setEndereco(cliente.getEndereco().trim().toUpperCase());
+        clienteSaida.setEstado(cliente.getEstado().trim().toUpperCase());
+        clienteSaida.setCpf(cliente.getCpf().trim().toUpperCase());
+
+        //salva atualizando
+        clienteDAO.save(clienteSaida);
+
+    }
+
+    private void validaCliente(String nome, String sobrenome, String cpf, String endereco, String cidade, String estado) throws NegocioException, Exception {
+
         StringBuilder sbErrors = new StringBuilder();
 
         int idxErrors = 0;
@@ -83,7 +142,7 @@ public class ClienteController {
         }
 
         if (!Utils.validarSiglaUF(estado)) {
-            
+
             sbErrors.append("- Estado Inválido.");
             sbErrors.append("\n");
             idxErrors++;
@@ -95,57 +154,6 @@ public class ClienteController {
             throw new NegocioException(sbErrors.toString());
 
         }
-
-        Cliente cliente = new Cliente();
-
-        cliente.setNome(nome.trim().toUpperCase());
-        cliente.setSobrenome(sobrenome.trim().toUpperCase());
-        cliente.setCpf(cpf.trim().toUpperCase());
-        cliente.setEndereco(endereco.trim().toUpperCase());
-        cliente.setCidade(cidade.trim().toUpperCase());
-        cliente.setEstado(estado.trim().toUpperCase());
-        cliente.setFlgAtivo(true); //flgAtivo sempre TRUE ao cadastrar um Cliente
-
-        //salva um cliente
-        clienteDAO.save(cliente);
-
-    }
-
-    public List<Cliente> listarTodosClientesController() throws NegocioException, Exception {
-
-        List<Cliente> listaSaida = new ArrayList<Cliente>();
-
-        listaSaida = clienteDAO.getAll(Cliente.class);
-
-        return listaSaida;
-
-    }
-
-    public Cliente consultarClienteByIdController(Integer codCliente) throws NegocioException, Exception {
-
-        Cliente clienteSaida = null;
-
-        clienteSaida = clienteDAO.getById(Cliente.class, codCliente);
-
-        return clienteSaida;
-
-    }
-
-    public void atualizarClienteByIdController(Cliente cliente) throws NegocioException, Exception {
-
-        Cliente clienteSaida = new Cliente();
-
-        clienteSaida.setCodCliente(cliente.getCodCliente());
-        clienteSaida.setCidade(cliente.getCidade().trim().toUpperCase());
-        clienteSaida.setNome(cliente.getNome().trim().toUpperCase());
-        clienteSaida.setSobrenome(cliente.getSobrenome().trim().toUpperCase());
-        clienteSaida.setFlgAtivo(cliente.getFlgAtivo());
-        clienteSaida.setEndereco(cliente.getEndereco().trim().toUpperCase());
-        clienteSaida.setEstado(cliente.getEstado().trim().toUpperCase());
-        clienteSaida.setCpf(cliente.getCpf().trim().toUpperCase());
-
-        //salva atualizando
-        clienteDAO.save(clienteSaida);
 
     }
 

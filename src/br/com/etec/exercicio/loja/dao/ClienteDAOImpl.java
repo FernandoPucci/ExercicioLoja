@@ -13,5 +13,8 @@ import br.com.etec.exercicio.loja.model.Cliente;
  */
 public class ClienteDAOImpl extends BaseDAOImpl<Cliente, Integer> implements ClienteDAO {
  
+    
+    
+    
 }
 
