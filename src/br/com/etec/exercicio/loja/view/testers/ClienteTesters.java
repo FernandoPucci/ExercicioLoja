@@ -22,7 +22,7 @@ public class ClienteTesters {
         try {
 
             //testa o cadstro do clente
-            //cadastrarClienteTester();
+            cadastrarClienteTester();
             //testa a consulta dos clientes
             //consultarTodosClientesTester();
 
@@ -53,7 +53,7 @@ public class ClienteTesters {
         //Cria uma instancia do objeto ClienteController
         ClienteController clienteController = new ClienteController();
         System.out.println("Teste Cadastrando cliente");
-        //clienteController.cadastrarClienteController("JOSE", "DA SILVA", "38658963756", "RUA ANTONIO CRISTOVAM, 543", "MOCOCA", "SP");
+        clienteController.cadastrarClienteController("Ricardo", "Akira", "61175806579", "RUA ANTONIO CRISTOVAM, 543", "MOCOCA", "SP");
 //        clienteController.cadastrarClienteController("Júlio", "Pereira Gomes", "74392297896", "Rua Avelino Jacó da Silva, 729", "Juiz de Fora", "MG");
 //        clienteController.cadastrarClienteController("Samuel", "Araujo Santos", "61175806579", "Rua Alvarenga Peixoto, 257", "Ituiutaba", "MG");
 //        clienteController.cadastrarClienteController("Letícia", "Cavalcanti Goncalves", "19307906602", "Rua Sargento Jayme Pantaleão, 1393", "Maceió", "AL");
@@ -64,7 +64,7 @@ public class ClienteTesters {
 //        clienteController.cadastrarClienteController("Anna", "Barros Silva", "50205448844", "Rua Resende, 1189", "Guarapuava", "PR");
 //        clienteController.cadastrarClienteController("Breno", "Correia Gomes", "29159937858", "Rua Antônio Barzaque Primo, 708", "Araçatuba", "SP");
 //        clienteController.cadastrarClienteController("Sophia", "Souza Cardoso", "91204552320", "Rua Doutor José Augusto, 1130", "JAU", "SP");
-        clienteController.cadastrarClienteController("Jose", "Pedro da Silva", "65931313001", "Rua Escorrega la vai um", "Mococa", "SP");
+        //clienteController.cadastrarClienteController("Jose", "Pedro da Silva", "65931313001", "Rua Escorrega la vai um", "Mococa", "SP");
         System.out.println("Teste OK");
 
     }

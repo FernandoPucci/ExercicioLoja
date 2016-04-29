@@ -1,0 +1,153 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.5.40
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema exec_pc_ii
+--
+
+CREATE DATABASE IF NOT EXISTS exec_pc_ii;
+USE exec_pc_ii;
+
+--
+-- Definition of table `cliente`
+--
+
+DROP TABLE IF EXISTS `cliente`;
+CREATE TABLE `cliente` (
+  `COD_CLIENTE` int(11) NOT NULL AUTO_INCREMENT,
+  `CIDADE` varchar(255) DEFAULT NULL,
+  `CPF` varchar(255) DEFAULT NULL,
+  `ENDERECO` varchar(255) DEFAULT NULL,
+  `ESTADO` varchar(255) DEFAULT NULL,
+  `FLG_ATIVO` bit(1) DEFAULT NULL,
+  `NOME` varchar(255) DEFAULT NULL,
+  `SOBRENOME` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`COD_CLIENTE`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cliente`
+--
+
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` (`COD_CLIENTE`,`CIDADE`,`CPF`,`ENDERECO`,`ESTADO`,`FLG_ATIVO`,`NOME`,`SOBRENOME`) VALUES 
+ (1,'MOCOCA','61175806579','RUA ANTONIO CRISTOVAM, 543','SP',0x01,'RICARDO','AKIRA');
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+
+
+--
+-- Definition of table `fornecedor`
+--
+
+DROP TABLE IF EXISTS `fornecedor`;
+CREATE TABLE `fornecedor` (
+  `COD_FORNECEDOR` int(11) NOT NULL AUTO_INCREMENT,
+  `CIDADE` varchar(255) DEFAULT NULL,
+  `ESTADO` varchar(255) DEFAULT NULL,
+  `FLG_ATIVO` bit(1) DEFAULT NULL,
+  `NOME_FORNECEDOR` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`COD_FORNECEDOR`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `fornecedor`
+--
+
+/*!40000 ALTER TABLE `fornecedor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fornecedor` ENABLE KEYS */;
+
+
+--
+-- Definition of table `item_venda`
+--
+
+DROP TABLE IF EXISTS `item_venda`;
+CREATE TABLE `item_venda` (
+  `COD_ITEM` int(11) NOT NULL AUTO_INCREMENT,
+  `QUANTIDADE` double DEFAULT NULL,
+  `COD_PRODUTO` int(11) DEFAULT NULL,
+  `COD_VENDA` int(11) DEFAULT NULL,
+  PRIMARY KEY (`COD_ITEM`),
+  KEY `FK_covnv1k7hv2qxd3ait2smxsdh` (`COD_PRODUTO`),
+  KEY `FK_5f2ijlycfh7i51n4uldmjr1a8` (`COD_VENDA`),
+  CONSTRAINT `FK_5f2ijlycfh7i51n4uldmjr1a8` FOREIGN KEY (`COD_VENDA`) REFERENCES `venda` (`COD_VENDA`),
+  CONSTRAINT `FK_covnv1k7hv2qxd3ait2smxsdh` FOREIGN KEY (`COD_PRODUTO`) REFERENCES `produto` (`COD_PRODUTO`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `item_venda`
+--
+
+/*!40000 ALTER TABLE `item_venda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `item_venda` ENABLE KEYS */;
+
+
+--
+-- Definition of table `produto`
+--
+
+DROP TABLE IF EXISTS `produto`;
+CREATE TABLE `produto` (
+  `COD_PRODUTO` int(11) NOT NULL AUTO_INCREMENT,
+  `FLG_ATIVO` bit(1) DEFAULT NULL,
+  `NOME_PRODUTO` varchar(255) DEFAULT NULL,
+  `PRECO_UNITARIO` double DEFAULT NULL,
+  `COD_FORNECEDOR` int(11) DEFAULT NULL,
+  PRIMARY KEY (`COD_PRODUTO`),
+  KEY `FK_gv02n8ijn7om344rpfvv4db53` (`COD_FORNECEDOR`),
+  CONSTRAINT `FK_gv02n8ijn7om344rpfvv4db53` FOREIGN KEY (`COD_FORNECEDOR`) REFERENCES `fornecedor` (`COD_FORNECEDOR`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produto`
+--
+
+/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+
+
+--
+-- Definition of table `venda`
+--
+
+DROP TABLE IF EXISTS `venda`;
+CREATE TABLE `venda` (
+  `COD_VENDA` int(11) NOT NULL AUTO_INCREMENT,
+  `DATA_NOTA` datetime DEFAULT NULL,
+  `VALOR_TOTAL` double DEFAULT NULL,
+  `COD_CLIENTE` int(11) DEFAULT NULL,
+  PRIMARY KEY (`COD_VENDA`),
+  KEY `FK_i9l1f5h4vwm5kvu4ev2ruqggr` (`COD_CLIENTE`),
+  CONSTRAINT `FK_i9l1f5h4vwm5kvu4ev2ruqggr` FOREIGN KEY (`COD_CLIENTE`) REFERENCES `cliente` (`COD_CLIENTE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `venda`
+--
+
+/*!40000 ALTER TABLE `venda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `venda` ENABLE KEYS */;
+
+
+
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
