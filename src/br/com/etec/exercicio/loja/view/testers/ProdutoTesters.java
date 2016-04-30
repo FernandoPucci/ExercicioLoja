@@ -17,106 +17,121 @@ import java.util.List;
  * @author fernando-pucci
  */
 public class ProdutoTesters {
-    
+
     public static void main(String[] args) {
-        
+
         try {
 
             //testa cadastrar Produto
-            cadastrarProdutoTesters();
-
+//            cadastrarProdutoTesters();
             //testa listagem de todos produtos cadastrados
-            consultarTodosProdutosTesters();
-
+//            consultarTodosProdutosTesters();
             //testar consultar produto por ID
-            consultarProdutoByIdTesters(1);
-
+//            consultarProdutoByIdTesters(1);
             //testar atualizar produto
-            atualizarProdutoByIdTester(5);
-            
-            System.exit(0);
+//            atualizarProdutoByIdTester(5);
+            //testa consulta produto por nome
+            consultarProdutoByNomeTester("spri");
             
         } catch (Exception ex) {
-            
+
             System.out.println(">>> ERRO NO TESTE: " + ex.getMessage());
             ex.printStackTrace();
-            
+
+        } finally {
+
+            System.exit(0);
+
         }
     }
-    
+
     private static void cadastrarProdutoTesters() throws Exception {
-        
+
         ProdutoController produtoController = new ProdutoController();
-        
+
         System.out.println("CARREGA FORNECEDOR PARA PRODUTO:");
-        
+
         FornecedorController fornecedorController = new FornecedorController();
-        
+
         Fornecedor fornecedor = fornecedorController.consultarFornecedorByIdController(4);
-        
+
         System.out.println("UTILIZANDO FORNECEDOR: " + fornecedor.getNomeFornecedor());
-        
+
         produtoController.cadastrarProdutoController(fornecedor, "Coca-cola ZERO", 5.30D);
-        
+
         System.out.println("TESTE OK");
-        
+
     }
-    
+
     private static void consultarTodosProdutosTesters() throws Exception {
-        
+
         ProdutoController produtoController = new ProdutoController();
-        
+
         List<Produto> listaProdutos = new ArrayList<Produto>();
-        
+
         listaProdutos = produtoController.listarTodosProdutosController();
-        
+
         if (listaProdutos.isEmpty()) {
-            
+
             System.out.println("NÃO HÁ NENHUM PRODUTO CADASTRADO");
-            
+
         } else {
-            
+
             for (Produto p : listaProdutos) {
-                
+
                 System.out.println(p.toString());
-                
+
             }
-            
+
         }
-        
+
     }
-    
+
     private static void consultarProdutoByIdTesters(Integer codProduto) throws Exception {
-        
+
         ProdutoController produtoController = new ProdutoController();
         System.out.println("Teste Consulta PRODUTO por ID " + codProduto);
-        
+
         Produto produto = produtoController.consultarProdutoByIdController(codProduto);
-        
+
         System.out.println(produto.toString());
-        
+
     }
-    
+
     private static void atualizarProdutoByIdTester(Integer codProduto) throws Exception {
-        
+
         ProdutoController produtoController = new ProdutoController();
         System.out.println("Teste Consulta/atualzacao PRODUTO por ID " + codProduto);
-        
+
         Produto produto = produtoController.consultarProdutoByIdController(codProduto);
-        
+
         if (produto == null) {
-            
+
             System.out.println("NÃO HÁ NENHUM PRODUTO REGISTRADO COM ESTE CODIGO: " + codProduto);
-            
+
         } else {
-            
+
             produto.setNomeProduto("sprite");
             produto.setPrecoUnitario(4.00D);
-            
+
             produtoController.atualizarProdutoFornecedorByIdController(produto);
-            
+
         }
-        
+
     }
-    
+
+    private static void consultarProdutoByNomeTester(String nome) throws Exception {
+
+        ProdutoController produtoController = new ProdutoController();
+
+        List<Produto> listaProduto = produtoController.consultarProdutoByNomeController(nome);
+
+        for (Produto p : listaProduto) {
+
+            System.out.println(p.toString());
+
+        }
+
+    }
+
 }

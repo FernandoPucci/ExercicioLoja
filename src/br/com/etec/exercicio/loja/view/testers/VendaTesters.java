@@ -27,17 +27,21 @@ public class VendaTesters {
             //testa listagem de todos vendas cadastrados
             consultarTodasVendasTesters();
             //testar consultar venda por ID
-             consultarVendaByIdTesters(1);
+            consultarVendaByIdTesters(1);
             //testar atualizar venda
-             atualizarVendaByIdTester(1);
-             
-             //consulta venda atualizada
-             consultarVendaByIdTesters(1);
-            System.exit(0);
+            atualizarVendaByIdTester(1);
+
+            //consulta venda atualizada
+            consultarVendaByIdTesters(1);
+
         } catch (Exception ex) {
 
             System.out.println(">>> ERRO NO TESTE: " + ex.getMessage());
             ex.printStackTrace();
+
+        } finally {
+
+            System.exit(0);
 
         }
     }
@@ -99,8 +103,8 @@ public class VendaTesters {
 
     }
 
-    private static void atualizarVendaByIdTester(int codVenda)  throws Exception{
-       
+    private static void atualizarVendaByIdTester(int codVenda) throws Exception {
+
         VendaController vendaController = new VendaController();
 
         Venda vendaSaida = new Venda();
@@ -112,14 +116,13 @@ public class VendaTesters {
 
         } else {
 
-               vendaSaida.setValorTotal(0.0);
+            vendaSaida.setValorTotal(0.0);
                // vendaSaida.setValorTotal(vendaSaida.getValorTotal() + 1.50);
-               // vendaSaida.setDataNota(new Date(System.currentTimeMillis()));
-                vendaController.atualizarVendaController(vendaSaida);
+            // vendaSaida.setDataNota(new Date(System.currentTimeMillis()));
+            vendaController.atualizarVendaController(vendaSaida);
 
         }
-        
-        
+
     }
 
 }

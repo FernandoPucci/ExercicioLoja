@@ -6,10 +6,10 @@
     <properties>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/exec_pc_ii"/>
-      <property name="javax.persistence.jdbc.user" value="root"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.password" value="123456"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/EXEC_PC_II"/>
+<!--      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.password" value=""/>-->
       <!-- PROPRIEDADES DO HIBERNATE -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
       <property name="hibernate.show_sql" value="true"/>

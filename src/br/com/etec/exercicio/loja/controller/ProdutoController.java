@@ -7,6 +7,7 @@ package br.com.etec.exercicio.loja.controller;
 
 import br.com.etec.exercicio.loja.dao.ProdutoDAO;
 import br.com.etec.exercicio.loja.dao.ProdutoDAOImpl;
+import br.com.etec.exercicio.loja.exceptions.NegocioException;
 import br.com.etec.exercicio.loja.model.Fornecedor;
 import br.com.etec.exercicio.loja.model.Produto;
 import java.util.ArrayList;
@@ -17,19 +18,19 @@ import java.util.List;
  * @author fernando-pucci
  */
 public class ProdutoController {
-    
+
     ProdutoDAO produtoDAO = null;
-    
+
     public ProdutoController() {
-        
+
         if (produtoDAO == null) {
-            
+
             produtoDAO = new ProdutoDAOImpl();
-            
+
         }
-        
+
     }
-    
+
     public void cadastrarProdutoController(
             Fornecedor fornecedor,
             String nomeProduto,
@@ -37,44 +38,44 @@ public class ProdutoController {
 
         //TODO: realizar validações de nulidade
         if ((fornecedor == null) || (fornecedor.getCodFornecedor() == null)) {
-            
+
             throw new Exception("Impossível cadastrar um Produto sem Fornecedor. Cadastre primeiramene o Fornecedor.");
-            
+
         }
-        
+
         Produto produto = new Produto();
-        
+
         produto.setFlgAtivo(Boolean.TRUE);
         produto.setFornecedor(fornecedor);
         produto.setNomeProduto(nomeProduto.trim().toUpperCase());
         produto.setPrecoUnitario(precoUnitario);
-        
+
         produtoDAO.save(produto);
-        
+
     }
-    
+
     public List<Produto> listarTodosProdutosController() throws Exception {
-        
+
         List<Produto> listaSaida = new ArrayList<Produto>();
-        
+
         listaSaida = produtoDAO.getAll(Produto.class);
-        
+
         return listaSaida;
-        
+
     }
-    
+
     public Produto consultarProdutoByIdController(Integer codProduto) throws Exception {
-        
+
         Produto produtoSaida = null;
-        
+
         produtoSaida = produtoDAO.getById(Produto.class, codProduto);
-        
+
         return produtoSaida;
-        
+
     }
-    
+
     public void atualizarProdutoFornecedorByIdController(Produto produto) throws Exception {
-        
+
         Produto produtoSaida = new Produto();
         produtoSaida.setCodProduto(produto.getCodProduto());
         produtoSaida.setFlgAtivo(produto.isFlgAtivo());
@@ -84,7 +85,23 @@ public class ProdutoController {
 
         //salva atualizando
         produtoDAO.save(produtoSaida);
-        
+
     }
-    
+
+    public List<Produto> consultarProdutoByNomeController(String nome) throws NegocioException, Exception {
+
+        List<Produto> listaSaida = new ArrayList<Produto>();
+
+        if ((nome == null) || (nome.trim().isEmpty())) {
+
+            return listaSaida;
+
+        }
+
+        listaSaida = produtoDAO.consultarProdutoByNomeDAO(nome.trim());
+
+        return listaSaida;
+
+    }
+
 }

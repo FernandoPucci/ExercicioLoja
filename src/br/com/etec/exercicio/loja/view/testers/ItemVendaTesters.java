@@ -28,13 +28,16 @@ public class ItemVendaTesters {
             //testar listar todos itens venda geral
             listarTodosItensVendaTesters();
             //testar atualizar Item Venda
-             atualizarItemVendaTesters(1);
+            atualizarItemVendaTesters(1);
 
-            System.exit(0);
         } catch (Exception ex) {
 
             System.out.println(">>> ERRO NO TESTE: " + ex.getMessage());
             ex.printStackTrace();
+
+        } finally {
+
+            System.exit(0);
 
         }
 
@@ -98,7 +101,7 @@ public class ItemVendaTesters {
         ItemVenda itemVendaAtualizar = itemVendaController.consultarItemVendaByIdController(codItemVenda);
 
         if (itemVendaAtualizar == null) {
-            
+
             throw new Exception("NÃO HÁ NENHUM ITEM VENDA CORRESPONDENTE A ESTE CODIGO [" + codItemVenda + "].");
 
         }
@@ -117,7 +120,7 @@ public class ItemVendaTesters {
         Double quantidadeVendida = 1.0;
 
         System.out.println("ATUALIZAR ITEMVENDA");
-   
+
         itemVendaController.atualizarItemVendaController(itemVendaAtualizar, produtoAtualizarItemVenda, quantidadeVendida);
         itemVendaAtualizar.setVenda(vendaAtualizarItemVenda);
 

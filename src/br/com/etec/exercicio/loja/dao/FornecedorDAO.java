@@ -6,6 +6,7 @@
 package br.com.etec.exercicio.loja.dao;
 
 import br.com.etec.exercicio.loja.model.Fornecedor;
+import java.util.List;
 
 /**
  *
@@ -13,4 +14,7 @@ import br.com.etec.exercicio.loja.model.Fornecedor;
  */
 public interface FornecedorDAO extends BaseDAO<Fornecedor, Integer> {
     
+    public List<Fornecedor> consultarFornecedorByNomeDAO(String nome) throws Exception;
+    
+        
 }

@@ -8,6 +8,7 @@ package br.com.etec.exercicio.loja.controller;
 import br.com.etec.exercicio.loja.model.Fornecedor;
 import br.com.etec.exercicio.loja.dao.FornecedorDAO;
 import br.com.etec.exercicio.loja.dao.FornecedorDAOImpl;
+import br.com.etec.exercicio.loja.exceptions.NegocioException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +74,22 @@ public class FornecedorController {
 
         //salva atualizando
         fornecedorDAO.save(fornecedorSaida);
+
+    }
+
+    public List<Fornecedor> consultarFornecedorByNomeController(String nome) throws NegocioException, Exception {
+
+        List<Fornecedor> listaSaida = new ArrayList<Fornecedor>();
+
+        if ((nome == null) || (nome.trim().isEmpty())) {
+
+            return listaSaida;
+
+        }
+
+        listaSaida = fornecedorDAO.consultarFornecedorByNomeDAO(nome.trim());
+
+        return listaSaida;
 
     }
 
