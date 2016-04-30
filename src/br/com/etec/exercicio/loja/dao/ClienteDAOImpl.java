@@ -6,9 +6,7 @@
 package br.com.etec.exercicio.loja.dao;
 
 import br.com.etec.exercicio.loja.model.Cliente;
-import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
