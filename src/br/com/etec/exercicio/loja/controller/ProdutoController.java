@@ -31,17 +31,15 @@ public class ProdutoController {
 
     }
 
-    public void cadastrarProdutoController(
-            Fornecedor fornecedor,
-            String nomeProduto,
-            Double precoUnitario) throws Exception {
+    public void cadastrarProdutoController(Fornecedor fornecedor, String nomeProduto, Double precoUnitario) throws NegocioException, Exception {
 
-        //TODO: realizar validações de nulidade
         if ((fornecedor == null) || (fornecedor.getCodFornecedor() == null)) {
 
             throw new Exception("Impossível cadastrar um Produto sem Fornecedor. Cadastre primeiramene o Fornecedor.");
 
         }
+
+        validaProdutoString(nomeProduto, precoUnitario);
 
         Produto produto = new Produto();
 
@@ -74,7 +72,15 @@ public class ProdutoController {
 
     }
 
-    public void atualizarProdutoFornecedorByIdController(Produto produto) throws Exception {
+    public void atualizarProdutoFornecedorByIdController(Produto produto) throws NegocioException, Exception {
+
+        if (produto == null) {
+
+            throw new Exception("Impossível atualizar, Produto nulo");
+
+        }
+
+        validaProdutoString(produto.getNomeProduto(), produto.getPrecoUnitario());
 
         Produto produtoSaida = new Produto();
         produtoSaida.setCodProduto(produto.getCodProduto());
@@ -101,6 +107,34 @@ public class ProdutoController {
         listaSaida = produtoDAO.consultarProdutoByNomeDAO(nome.trim());
 
         return listaSaida;
+
+    }
+
+    private void validaProdutoString(String nomeProduto, Double precoUnitario) throws NegocioException, Exception {
+
+        StringBuilder sbErrors = new StringBuilder();
+
+        int idxErrors = 0;
+
+        if ((nomeProduto == null) || (nomeProduto.isEmpty())) {
+
+            sbErrors.append("- O Campo Nome do Produto deve ser preenchido.");
+            sbErrors.append("\n");
+            idxErrors++;
+
+        }
+
+        if (precoUnitario <= 0.0) {
+            sbErrors.append("- Preço Unitário Inválido.");
+            sbErrors.append("\n");
+            idxErrors++;
+        }
+
+        if (idxErrors > 0) {
+
+            throw new NegocioException(sbErrors.toString());
+
+        }
 
     }
 

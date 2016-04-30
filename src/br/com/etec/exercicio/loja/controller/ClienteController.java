@@ -77,6 +77,12 @@ public class ClienteController {
 
     public void atualizarClienteByIdController(Cliente cliente) throws NegocioException, Exception {
 
+        if (cliente == null) {
+
+            throw new Exception("Impossível atualizar, Cliente nulo");
+
+        }
+        
         validaCliente(cliente.getNome(), cliente.getSobrenome(), cliente.getCpf(), cliente.getEndereco(), cliente.getCidade(), cliente.getEstado());
 
         Cliente clienteSaida = new Cliente();
@@ -159,7 +165,7 @@ public class ClienteController {
 
         if (!Utils.validarSiglaUF(estado)) {
 
-            sbErrors.append("- Estado Inválido.");
+            sbErrors.append("- Estado Cliente Inválido.");
             sbErrors.append("\n");
             idxErrors++;
 

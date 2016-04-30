@@ -9,6 +9,7 @@ import br.com.etec.exercicio.loja.model.Fornecedor;
 import br.com.etec.exercicio.loja.dao.FornecedorDAO;
 import br.com.etec.exercicio.loja.dao.FornecedorDAOImpl;
 import br.com.etec.exercicio.loja.exceptions.NegocioException;
+import br.com.etec.exercicio.loja.util.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +30,10 @@ public class FornecedorController {
 
     }
 
-    public void cadastrarFornecedorController(String nome, String cidade, String estado) throws Exception {
+    public void cadastrarFornecedorController(String nome, String cidade, String estado) throws NegocioException, Exception {
 
-        //realizar valida??es
+        validaFornecedor(nome, cidade, estado);
+
         Fornecedor fornecedor = new Fornecedor();
         fornecedor.setCidade(cidade.trim().toUpperCase());
         fornecedor.setEstado(estado.trim().toUpperCase());
@@ -62,7 +64,15 @@ public class FornecedorController {
 
     }
 
-    public void atualizarFornecedorByIdController(Fornecedor fornecedor) throws Exception {
+    public void atualizarFornecedorByIdController(Fornecedor fornecedor) throws NegocioException, Exception {
+
+        if (fornecedor == null) {
+
+            throw new Exception("Impossível atualizar, Fornecedor nulo");
+
+        }
+
+        validaFornecedor(fornecedor.getNomeFornecedor(), fornecedor.getCidade(), fornecedor.getEstado());
 
         Fornecedor fornecedorSaida = new Fornecedor();
         fornecedorSaida.setCidade(fornecedor.getCidade().trim().toUpperCase());
@@ -90,6 +100,52 @@ public class FornecedorController {
         listaSaida = fornecedorDAO.consultarFornecedorByNomeDAO(nome.trim());
 
         return listaSaida;
+
+    }
+
+    private void validaFornecedor(String nome, String cidade, String estado) throws NegocioException, Exception {
+
+        StringBuilder sbErrors = new StringBuilder();
+
+        int idxErrors = 0;
+
+        if ((nome == null) || (nome.isEmpty())) {
+
+            sbErrors.append("- O Campo Nome do Fornecedor deve ser preenchido.");
+            sbErrors.append("\n");
+            idxErrors++;
+
+        }
+
+        if ((cidade == null) || (cidade.isEmpty())) {
+
+            sbErrors.append("- O Campo Cidade do Cliente deve ser preenchido.");
+            sbErrors.append("\n");
+            idxErrors++;
+
+        }
+
+        if ((cidade == null) || (cidade.isEmpty())) {
+
+            sbErrors.append("- O Campo Cidade do Fornecedor deve ser preenchido.");
+            sbErrors.append("\n");
+            idxErrors++;
+
+        }
+
+        if (!Utils.validarSiglaUF(estado)) {
+
+            sbErrors.append("- Estado Fornecedor Inválido.");
+            sbErrors.append("\n");
+            idxErrors++;
+
+        }
+
+        if (idxErrors > 0) {
+
+            throw new NegocioException(sbErrors.toString());
+
+        }
 
     }
 
